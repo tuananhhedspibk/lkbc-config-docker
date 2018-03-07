@@ -1,11 +1,14 @@
-FROM yarnpkg/node-yarn
-
-COPY ChatVNLaw/ src/app
+FROM mhart/alpine-node:latest
 
 WORKDIR src/app
 
-RUN yarn install -g
+RUN mkdir build
+
+COPY ChatVNLaw/build/ ./build
+COPY ChatVNLaw/server.js .
+
+RUN yarn add express
 
 EXPOSE 3000
 
-CMD [ "yarn", "start" ]
+CMD [ "node", "server.js" ]
