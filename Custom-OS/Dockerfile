@@ -16,7 +16,7 @@ RUN apt-get update \
     && apt-get clean
 
 RUN pip install scrapy
-RUN pip install html2text
+RUN pip install -I html2text==2016.9.19
 RUN pip install pymongo
 RUN apt-get install -y jq
 
